@@ -3,36 +3,16 @@
 #include <algorithm>
 #include "FilmDatabase.h"
 
-void requestPath(std::string & name_path, std::string & princip_path,
-                 std::string & akas_path, std::string & basic_path){
-    std::cout << "Введите путь до файла name.basics.tsv: ";
-    std::cin >> name_path;
+//first - name.basics.tsv, second - title.principals.tsv, third - title.akas.tsv, fourth - title.basics.tsv
+int main(int argc, char *argv[]) {
 
-    std::cout << "Введите путь до файла title.principals.tsv: ";
-    std::cin >> princip_path;
 
-    std::cout << "Введите путь до файла title.akas.tsv: ";
-    std::cin >> akas_path;
+    FilmDatabase db(argv[1], argv[2],
+                    argv[3], argv[4]);
 
-    std::cout << "Введите путь до файла title.basics.tsv: ";
-    std::cin >> basic_path;
-}
 
-int main() {
-
-    std::string search_word;
-
-    std::string name_path, princip_path, akas_path, basic_path;
-    requestPath(name_path, princip_path, akas_path, basic_path);
-
-    FilmDatabase db(name_path, princip_path,
-                    akas_path, basic_path);
-
-    std::cout << "Введите слово для поиска: ";
-    std::cin >> search_word;
-
-    db.search(search_word);
-
+    // actor
+    db.search(argv[5]);
 
     return 0;
 
